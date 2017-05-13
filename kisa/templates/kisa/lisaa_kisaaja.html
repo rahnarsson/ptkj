@@ -1,0 +1,14 @@
+<h1> Lisää kisaaja: </h1>
+
+<form action="{% url 'lisaa_kisaaja' %}" method="post">
+{% csrf_token %}
+<p>Etunimi<p>
+<input type="text" name="nimi_etu" id="nimi_etu">
+<p>Sukunimi<p>
+<input type="text" name="nimi_suku" id="nimi_suku">
+<p>Allergiat<p>
+<input type="text" name="allergiat" id="allergiat">
+<p>
+<input type="submit" value="Lisää" />
+
+</form>

@@ -1,0 +1,15 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'kisa/style.css' %}" />
+
+
+{% if kisalista %}
+    <ul>
+    {% for kisa in kisalista %}
+        <li><a href="/kisa/{{ kisa.id }}/">{{ kisa.nimi }}</a></li>
+    {% endfor %}
+    </ul>
+<p> <a href="/kisa/lisaa_kisaaja"/a>Lisää kisaaja
+{% else %}
+    <p>Ei kisoja :(.</p>
+{% endif %}
