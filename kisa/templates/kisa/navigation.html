@@ -1,0 +1,15 @@
+{% set navigation_bar = [
+  ('/kisa', 'kisa', 'Kisa'),
+  ('kisaajat', 'kisaajat', 'Kisaajat')]
+%}
+{% set active_page = 'kisa' %}
+<nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+          {% for href, id, caption in navigation_bar %}
+            <li{% if id == active_page %} class="active"{% endif %}>
+            <a href="{{ href }}">{{ caption }}</a></li>
+          {% endfor %}
+        </ul>
+    </div>
+</nav>
