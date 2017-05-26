@@ -13,6 +13,8 @@ class Kisaaja(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.nimi_etu, self.nimi_suku)
+    def save(self):
+        return 1;
 
 
 class Laji(models.Model):

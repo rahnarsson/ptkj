@@ -1,0 +1,12 @@
+<form action="{% url 'lisaa_kisaaja' %}" method="post">
+{% csrf_token %}
+<p>Etunimi<p>
+<input type="text" name="nimi_etu" id="nimi_etu" class="uk-input">
+<p>Sukunimi<p>
+<input type="text" name="nimi_suku" id="nimi_suku" class="uk-input">
+<p>Allergiat<p>
+<input type="text" name="allergiat" id="allergiat" class="uk-input">
+<p>
+<button type="submit" class="uk-button uk-button-primary">Lisää</button>
+<a href="#" class="uk-button uk-button-secondary">Peruuta</a>
+</form>
