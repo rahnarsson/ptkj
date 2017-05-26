@@ -1,0 +1,22 @@
+{% extends "kisa/base.html" %}
+{% block title %}[Kisan nimi]{% endblock %}
+{% block content %}
+<div  class="uk-container">
+  <h1 class="uk-heading-line uk-text-center"><span>KISA XYZ</span></h1>
+
+  {% include "kisa/kisa_valikko.html" %}
+
+  <dl class="uk-description-list">
+      <dt>Kisan nimi</dt>
+      <dd>Kesäkisat 2017</dd>
+      <dt>Ajankohta</dt>
+      <dd>1.9.2017-3.9.2017</dd>
+      <dt>Lajeja luotu</dt>
+      <dd>4</dd>
+      <dt>Osallistujia ilmoittautunut</dt>
+      <dd>14</dd>
+  </dl>
+
+
+</div>
+{% endblock %}

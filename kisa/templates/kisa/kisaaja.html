@@ -1,0 +1,22 @@
+{% extends "kisa/base.html" %}
+{% block title %}Kisaaja {{ kisaaja_id }}{% endblock %}
+{% block content %}
+<div  class="uk-container">
+  <h1 class="uk-heading-line uk-text-center"><span>Kisaaja {{ kisaaja_id }}</span></h1>
+
+  <dl class="uk-description-list">
+      <dt>Nimi</dt>
+      <dd>Heidi Lehtonen</dd>
+      <dt>Sähköpostiosoite</dt>
+      <dd>h3idilehtonen@gmail.com</dd>
+      <dt>Ruokarajoitteet</dt>
+      <dd>Gluteeniton, maidoton, ei punaista lihaa ja kanaa</dd>
+  </dl>
+
+  <p>
+    <a href="#edit-kisaaja" uk-toggle class="uk-button-primary uk-button">Muokkaa</a>
+    <a href="/kisa/lisaa_kisaaja" class="uk-button-danger uk-button">Poista</a>
+  </p>
+</div>
+{% include 'kisa/modals/kisaaja_modals.html' %}
+{% endblock %}

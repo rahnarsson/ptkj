@@ -13,12 +13,26 @@ def index(request):
     template = loader.get_template('kisa/index.html')
     context = {
         'kisalista': kisalista,
+        'navigation_bar': [
+          ['/kisa', 'index', 'Kisat'],
+          ['/kisa/kisaajat', 'kisaajat', 'Kisaajat']
+          ],
+          'active_page': { 'id': 'index', 'name': 'Etusivu'}
     }
     return HttpResponse(template.render(context, request))
 
 
 def detail(request, kilpailu_id):
-    return HttpResponse('Vilkuilet PTKJ:n kisaa: {}'.format(kilpailu_id))
+    template = loader.get_template('kisa/kisa.html')
+    context = {
+        'kisa': kilpailu_id,
+        'navigation_bar': [
+          ['/kisa', 'kisa', 'Kisat'],
+          ['/kisa/kisaajat', 'kisaajat', 'Kisaajat']
+          ],
+          'active_page': { 'id': 'kisa', 'name': 'Kisa'}
+    }
+    return HttpResponse(template.render(context, request))
 
 
 def lisaa_kisaaja(request):
@@ -30,12 +44,59 @@ def lisaa_kisaaja(request):
         # uusi_kisaaja['nimi_suku'] = request.POST['nimi_suku']
         # uusi_kisaaja['ruoka_allergiat'] = request.POST['allergiat']
         uusi_kisaaja.save()
-        context = {}
+        context = {
+            'navigation_bar': [
+              ['/kisa', 'kisa', 'Kisat'],
+              ['/kisa/kisaajat', 'kisaajat', 'Kisaajat']
+          ],
+          'active_page': { 'id': 'lisaa_kisaaja', 'name': 'Kisaajan nimi'}
+        }
         return HttpResponse(template.render(context, request))
     else:
-        context = {}
+        context = {
+            'navigation_bar': [
+              ['/kisa', 'kisa', 'Kisat'],
+              ['/kisa/kisaajat', 'kisaajat', 'Kisaajat']
+          ],
+          'active_page': { 'id': 'lisaa_kisaaja', 'name': 'Lisää kisaaja'}
+        }
         return HttpResponse(template.render(context, request))
 
 
 def add_lajipisteet(request, lajipisteet_id):
     return HttpResponse('Aseta lajipisteet: {}'.format(lajipisteet_id))
+
+def kisaajat(request, kilpailu_id):
+    template = loader.get_template('kisa/kisaajat.html')
+    context = {
+        'navigation_bar': [
+          ['/kisa', 'kisa', 'Kisat'],
+          ['/kisa/kisaajat', 'kisaajat', 'Kisaajat']
+      ],
+      'active_page': { 'id': 'kisaajat', 'name': 'Kisa ' + kilpailu_id + ' > Kisaajat'}
+    }
+    return HttpResponse(template.render(context, request))
+
+def kaikki_kisaajat(request):
+    template = loader.get_template('kisa/kisaajat.html')
+    context = {
+        'navigation_bar': [
+          ['/kisa', 'kisa', 'Kisat'],
+          ['/kisa/kisaajat', 'kisaajat', 'Kisaajat']
+      ],
+      'active_page': { 'id': 'kisaajat', 'name': 'Kaikki kisaajat'}
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def kisaaja(request, kilpailu_id, kisaaja_id):
+    template = loader.get_template('kisa/kisaaja.html')
+    context = {
+        'navigation_bar': [
+          ['/kisa', 'kisa', 'Kisat'],
+          ['/kisa/kisaajat', 'kisaajat', 'Kisaajat']
+      ],
+      'kisaaja_id': kisaaja_id,
+      'active_page': { 'id': 'kisaaja', 'name': 'Kisa ' + kilpailu_id + ' > Kisaaja ' + kisaaja_id}
+    }
+    return HttpResponse(template.render(context, request))

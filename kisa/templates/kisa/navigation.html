@@ -1,15 +1,28 @@
-{% set navigation_bar = [
-  ('/kisa', 'kisa', 'Kisa'),
-  ('kisaajat', 'kisaajat', 'Kisaajat')]
-%}
-{% set active_page = 'kisa' %}
+
 <nav class="uk-navbar-container" uk-navbar>
     <div class="uk-navbar-left">
+
         <ul class="uk-navbar-nav">
+            <li><a href="#navi" uk-toggle><span uk-icon="icon: menu"></span></a></li>
+        </ul>
+
+    </div>
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav">
+          <li class="uk-active uk-margin-right">{{ active_page.name }}</li>
+      </ul>
+    </div>
+</nav>
+
+<div id="navi" uk-offcanvas>
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
           {% for href, id, caption in navigation_bar %}
-            <li{% if id == active_page %} class="active"{% endif %}>
+            <li{% if id == active_page.id %} class="uk-active"{% endif %}>
             <a href="{{ href }}">{{ caption }}</a></li>
           {% endfor %}
         </ul>
     </div>
-</nav>
+</div>

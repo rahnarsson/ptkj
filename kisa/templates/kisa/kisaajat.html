@@ -1,0 +1,19 @@
+{% extends "kisa/base.html" %}
+{% block title %}Kisaajat{% endblock %}
+{% block content %}
+<div  class="uk-container">
+  <h1 class="uk-heading-line uk-text-center"><span>Kisaajat</span></h1>
+
+   {% if kisaajalista %}
+   <ul class="uk-list uk-list-striped">
+   {% for kisaaja in kisaajalista %}
+      <li><a href="/kisa/kisaaja/{{ kisaaja.id }}/">{{ kisaaja.nimi }}</a></li>
+   {% endfor %}
+   </ul>
+	{% else %}
+      <p>Ei kisaajia :(</p>
+	{% endif %}
+  <p><a href="#add-kisaaja" uk-toggle class="uk-button-primary uk-button">Lisää kisaaja</a></p>
+</div>
+{% include 'kisa/modals/kisaaja_modals.html' %}
+{% endblock %}
