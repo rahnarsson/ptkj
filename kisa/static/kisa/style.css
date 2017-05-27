@@ -3,4 +3,23 @@
 .uk-navbar-toggle {
   height: 60px;
 }
+.uk-offcanvas-bar {
+  background: #fff;
+  border-right: 1px solid #d4d4d4;
+  color: #484848;
+}
+.uk-offcanvas-bar * {
+  color: #484848;
+}
+.uk-offcanvas-bar ul {
+  margin-top: 2.2em;
+}
+.uk-offcanvas-bar ul li a {
+  color: #484848;
+}
+.uk-offcanvas-bar ul li.uk-active a {
+  background: #484848;
+  color: #fff;
+  padding: 5px 7px;
+}
 /*# sourceMappingURL=style.css.map */
