@@ -1,15 +1,40 @@
-{% load static %}
+{% extends "kisa/base.html" %}
+{% block title %}Kisalista{% endblock %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'kisa/style.css' %}" />
+{% block content %}
+<div class="uk-container">
+  <div class="uk-margin">
 
+  </div>
+  <div class="uk-card uk-card-body uk-card-default">
+    <h3 class="uk-card-title uk-heading-line uk-text-center">AIKAA SEURAAVIIN KISOIHIN ON </h3>
+    <div class="uk-grid-small" uk-countdown="date: 2017-09-01T17:00:00+00:00" uk-grid>
+      <span class="uk-width-1-4 uk-text-center uk-countdown-number uk-countdown-days"></span>
+      <span class="uk-width-1-4 uk-text-center uk-countdown-number uk-countdown-hours"></span>
+      <span class="uk-width-1-4 uk-text-center uk-countdown-number uk-countdown-minutes"></span>
+      <span class="uk-width-1-4 uk-text-center uk-countdown-number uk-countdown-seconds"></span>
+    </div>
 
-{% if kisalista %}
-    <ul>
-    {% for kisa in kisalista %}
-        <li><a href="/kisa/{{ kisa.id }}/">{{ kisa.nimi }}</a></li>
-    {% endfor %}
-    </ul>
-<p> <a href="/kisa/lisaa_kisaaja"/a>Lisää kisaaja
-{% else %}
-    <p>Ei kisoja :(.</p>
-{% endif %}
+    <div class="uk-grid-small" uk-grid>
+      <span class="uk-width-1-4 uk-text-center">päivää</span>
+      <span class="uk-width-1-4 uk-text-center">tuntia</span>
+      <span class="uk-width-1-4 uk-text-center">minuuttia</span>
+      <span class="uk-width-1-4 uk-text-center">sekuntia</span>
+    </div>
+  </div>
+</div>
+
+<div class="uk-container">
+  <hr>
+  <h3 class="uk-heading-line uk-text-center"><span>KISAT</span></h3>
+   {% if kisalista %}
+   <ul class="uk-list uk-list-striped">
+   {% for kisa in kisalista %}
+      <li><a href="/kisa/{{ kisa.id }}/">{{ kisa.nimi }}</a></li>
+   {% endfor %}
+   </ul>
+	{% else %}
+      <p>Ei kisoja :(.</p>
+	{% endif %}
+</div>
+{% endblock %}

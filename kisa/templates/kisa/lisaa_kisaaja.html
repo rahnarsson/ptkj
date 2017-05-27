@@ -1,14 +1,10 @@
-<h1> Lisää kisaaja: </h1>
+{% extends "kisa/base.html" %}
+{% block title %}Lisää kisaaja{% endblock %}
 
-<form action="{% url 'lisaa_kisaaja' %}" method="post">
-{% csrf_token %}
-<p>Etunimi<p>
-<input type="text" name="nimi_etu" id="nimi_etu">
-<p>Sukunimi<p>
-<input type="text" name="nimi_suku" id="nimi_suku">
-<p>Allergiat<p>
-<input type="text" name="allergiat" id="allergiat">
-<p>
-<input type="submit" value="Lisää" />
+{% block content %}
+<div class="uk-container">
+  <h1 class="uk-heading-line uk-text-center"><span>Lisää kisaaja</span></h1>
 
-</form>
+  {% include 'forms/kisaaja.html' %}
+</div>
+{% endblock %}

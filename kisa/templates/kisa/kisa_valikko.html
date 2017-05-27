@@ -1,0 +1,44 @@
+<nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+
+        <ul class="uk-navbar-nav">
+          <li>
+              <a href="#">Lajit (4)</a>
+              <div class="uk-navbar-dropdown" uk-drop="boundary: !nav; boundary-align: true; pos: bottom-justify;">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                      <li><a href="#">Polttopallo</a></li>
+                      <li><a href="#">1500m pulkalla</a></li>
+                      <li><a href="#">Kirveenheitto</a></li>
+                      <li><a href="#">Ristiseiska</a></li>
+                      <li class="uk-nav-divider"></li>
+                      <li><button type="button" href="#add-laji" uk-toggle class="uk-button-default uk-button-primary uk-button-small uk-width-1-1">Lisää laji</button></li>
+                  </ul>
+              </div>
+          </li>
+          <li>
+              <a href="#">Osallistujat (14)</a>
+              <div class="uk-navbar-dropdown" uk-drop="boundary: !nav; boundary-align: true; pos: bottom-justify;">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Antti Rahikainen</a></li>
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Tuure Pirttikoski</a></li>
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Teemu Marku</a></li>
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Heidi Lehtonen</a></li>
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Antti Rahikainen</a></li>
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Tuure Pirttikoski</a></li>
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Teemu Marku</a></li>
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Heidi Lehtonen</a></li>
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Antti Rahikainen</a></li>
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Tuure Pirttikoski</a></li>
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Teemu Marku</a></li>
+                    <li><a href="/kisa/{{ kisa }}/kisaaja/1">Heidi Lehtonen</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><button type="button" href="#add-kisaaja" uk-toggle class="uk-button-default uk-button-primary uk-button-small uk-width-1-1">Lisää osallistuja</button></li>
+                  </ul>
+              </div>
+          </li>
+        </ul>
+
+    </div>
+
+</nav>
+{% include 'kisa/modals/kisaaja_modals.html' %}

@@ -1,7 +1,6 @@
-body {
-    background-color: lightyellow;
+.uk-navbar-item,
+.uk-navbar-nav > li > a,
+.uk-navbar-toggle {
+  height: 60px;
 }
-
-p {
-    background-color: white;
-}
+/*# sourceMappingURL=style.css.map */
