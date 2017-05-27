@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from kisa import views
 
 urlpatterns = [
     url(r'^kisa/', include('kisa.urls')),
+    url(r'^ilmoittaudu/', views.ilmoittaudu),
     url(r'^admin/', admin.site.urls),
 ]

@@ -8,7 +8,8 @@ from .models import Kilpailu, Kisaaja
 
 navigation_bar = [
   ['/kisa', 'index', 'Kisat'],
-  ['/kisa/kisaajat', 'kisaajat', 'Kisaajat']
+  ['/kisa/kisaajat', 'kisaajat', 'Kisaajat'],
+  ['/kisa/lajit', 'lajit', 'Lajit']
 ]
 
 def index(request):
@@ -58,10 +59,13 @@ def add_lajipisteet(request, lajipisteet_id):
     return HttpResponse('Aseta lajipisteet: {}'.format(lajipisteet_id))
 
 def kisaajat(request, kilpailu_id):
+    kisaajat = [{ 'name': 'Heidi Lehtonen'}, {'name': 'Antti Rahikainen'}]
     template = loader.get_template('kisa/kisaajat.html')
     global navigation_bar
     context = {
         'navigation_bar': navigation_bar,
+        'kisa': { 'id': kilpailu_id, 'name': 'Kesäkisat 2017'},
+        'kisaajalista': kisaajat,
         'active_page': { 'id': 'kisaajat', 'name': 'Kisa ' + kilpailu_id + ' > Kisaajat'}
     }
     return HttpResponse(template.render(context, request))
@@ -84,4 +88,9 @@ def kisaaja(request, kisaaja_id):
         'kisaaja_id': kisaaja_id,
         'active_page': { 'id': 'kisaaja', 'name': 'Kisaaja ' + kisaaja_id}
     }
+    return HttpResponse(template.render(context, request))
+
+def ilmoittaudu(request):
+    template = loader.get_template('kisa/ilmoittaudu.html')
+    context = {}
     return HttpResponse(template.render(context, request))

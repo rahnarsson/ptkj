@@ -1,0 +1,43 @@
+{% extends "kisa/base.html" %}
+{% block title %}Ilmoittaudu{% endblock %}
+{% block navigation %} {% endblock %}
+{% block content %}
+<div  class="uk-container">
+  <h1 class="uk-heading-line uk-text-center"><span>Ilmoittaudu kisoihin</span></h1>
+  <p>Ilmoittautuminen PTKJ ry:n kesäkisoihin 2017</p>
+  <form action="{% url 'lisaa_kisaaja' %}" method="post">
+  {% csrf_token %}
+    <div class="uk-margin">
+        <div class="uk-form-controls">
+            <input class="uk-input" name="nimi_etu" id="nimi_etu" type="text" placeholder="Etunimi">
+        </div>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-form-controls">
+            <input class="uk-input" name="nimi_suku" id="nimi_suku" type="text" placeholder="Sukunimi">
+        </div>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-form-controls">
+            <input class="uk-input" name="nimi_suku" id="nimi_suku" type="email" placeholder="Sähköpostiosoite">
+        </div>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-form-controls">
+          <textarea class="uk-textarea" rows="5" placeholder="Ruoka-aineallergiat, muuta huomioitavaa"></textarea>
+        </div>
+    </div>
+    <div class="uk-margin uk-grid-small uk-child-width-auto" uk-grid>
+          <label><input class="uk-checkbox" type="checkbox" /> Olen lukenut ja hyväksyn ilmoittautumisen
+          <a href="#ehdot" uk-toggle>ehdot</a></label>
+    </div>
+    <div uk-alert>Ilmoittautumisen jälkeen suorita osallistumismaksu 50 &euro; PTKJ ry:n tilille FI10 10101 0101 0101 kolmen päivän kuluessa.
+       Ilmoittautuminen on sitova ja osallistumismaksua ei palauteta.</div>
+    <div class="uk-margin">
+      <button type="submit" class="uk-button uk-button-primary">Ilmoittaudu</button>
+    </div>
+  </form>
+</div>
+
+{% include 'kisa/modals/ilmoittaudu_modals.html' %}
+{% endblock %}

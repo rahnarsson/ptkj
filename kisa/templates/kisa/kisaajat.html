@@ -2,14 +2,28 @@
 {% block title %}Kisaajat{% endblock %}
 {% block content %}
 <div  class="uk-container">
-  <h1 class="uk-heading-line uk-text-center"><span>Kisaajat</span></h1>
+  <h1 class="uk-heading-line uk-text-center"><span>{{ kisa.name }} - osallistujat</span></h1>
 
    {% if kisaajalista %}
-   <ul class="uk-list uk-list-striped">
-   {% for kisaaja in kisaajalista %}
-      <li><a href="/kisa/kisaaja/{{ kisaaja.id }}/">{{ kisaaja.nimi }}</a></li>
-   {% endfor %}
-   </ul>
+   <table class="uk-table uk-table-divider uk-table-striped uk-table-middle">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th class="uk-text-center uk-width-small">Maksanut</th>
+            <th class="uk-width-small "></th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for kisaaja in kisaajalista %}
+        <tr>
+            <td><a href="/kisa/kisaaja/{{ kisaaja.id }}/">{{ kisaaja.name }}</a></td>
+            <td class="uk-text-center"> {% if forloop.counter == 1 %}<span uk-icon="icon: happy">{% endif %}</td>
+            <td class="uk-text-right"><button class="uk-button uk-button-default" type="button"><span uk-icon="icon: pencil"></span></button></td>
+        </tr>
+      {% endfor %}
+
+
+   </table>
 	{% else %}
       <p>Ei kisaajia :(</p>
 	{% endif %}
