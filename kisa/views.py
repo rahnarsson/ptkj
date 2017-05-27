@@ -90,6 +90,11 @@ def kisaaja(request, kisaaja_id):
     }
     return HttpResponse(template.render(context, request))
 
+def kisaajainfo(request, kisaaja_id):
+    context = {}
+    template = loader.get_template('kisa/modals/kisaajainfo.html')
+    return HttpResponse(template.render(context, request))
+
 def ilmoittaudu(request):
     template = loader.get_template('kisa/ilmoittaudu.html')
     context = {}

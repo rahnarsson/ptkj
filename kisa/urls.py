@@ -13,5 +13,7 @@ urlpatterns = [
     url(r'^(?P<kilpailu_id>[0-9]+)/osallistujat', views.kisaajat, name='kisaajat'),
     url(r'^kisaaja/(?P<kisaaja_id>[0-9]+)', views.kisaaja, name='kisaaja'),
 
+    url(r'^kisaajainfo/(?P<kisaaja_id>[0-9]+)', views.kisaajainfo, name='kisaajainfo'),
+
     url(r'^/ilmoittaudu', views.ilmoittaudu, name='ilmoittaudu')
 ]
