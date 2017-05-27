@@ -1,0 +1,24 @@
+{% extends "kisa/base.html" %}
+{% block title %}Kisaajat{% endblock %}
+{% block content %}
+<div  class="uk-container">
+  <h1 class="uk-heading-line uk-text-center"><span>Lajit</span></h1>
+
+  <p><a href="#add-laji" uk-toggle class="uk-button-primary uk-button">Lisää laji</a>
+  {% if lajilista %}
+    <ul class="uk-list">
+      {% for laji in lajilista %}
+        <li>
+            <a href="#">{{ laji.name }}</a>
+        </li>
+      {% endfor %}
+
+
+   </ul>
+	{% else %}
+      <p>Ei lajeja :(</p>
+	{% endif %}
+</div>
+
+{% include 'kisa/modals/laji_modals.html' %}
+{% endblock %}

@@ -99,3 +99,16 @@ def ilmoittaudu(request):
     template = loader.get_template('kisa/ilmoittaudu.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
+def lajit(request):
+    template = loader.get_template('kisa/lajit.html')
+    context = {
+        'navigation_bar': navigation_bar,
+        'active_page': { 'id': 'lajit', 'name': 'Lajit '}
+    }
+    return HttpResponse(template.render(context, request))
+
+def lajityyppiinfo(request):
+    template = loader.get_template('kisa/lajityyppiinfo.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
