@@ -59,7 +59,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.jinja2.Jinja2',
         'DIRS': ['kisa/templates/kisa', 'kisa/templates/kisa', 'kisa/templates/kisa'],
         'APP_DIRS': True,
-        'OPTIONS': {'environment': 'kisa.jinja2.Environment'},
+        'OPTIONS': {'environment': 'kisa.jinja2.environment'},
     },
 
     {
