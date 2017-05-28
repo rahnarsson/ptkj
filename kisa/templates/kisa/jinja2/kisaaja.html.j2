@@ -1,4 +1,4 @@
-{% extends "kisa/base.html" %}
+{% extends "jinja2/base.html.j2" %}
 {% block title %}Kisaaja {{ kisaaja_id }}{% endblock %}
 {% block content %}
 <div  class="uk-container">
@@ -21,5 +21,5 @@
     <a href="#" class="uk-button-danger uk-button">Poista</a>
   </p>
 </div>
-{% include 'kisa/modals/kisaaja_modals.html' %}
+{% include 'modals/kisaaja_modals.html' %}
 {% endblock %}

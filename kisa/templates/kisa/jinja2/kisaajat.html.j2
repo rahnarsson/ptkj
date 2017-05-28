@@ -1,4 +1,4 @@
-{% extends "kisa/base.html" %}
+{% extends "jinja2/base.html.j2" %}
 {% block title %}Kisaajat{% endblock %}
 {% block content %}
 <div  class="uk-container">
@@ -33,6 +33,6 @@
       <p>Ei kisaajia :(</p>
 	{% endif %}
 </div>
-{% include 'kisa/modals/kisaaja_modals.html' %}
-{% include 'kisa/modals/mailia.html' %}
+{% include 'modals/kisaaja_modals.html' %}
+{% include 'modals/mailia.html' %}
 {% endblock %}

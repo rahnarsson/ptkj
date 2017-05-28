@@ -15,8 +15,8 @@ navigation_bar = [
 def index(request):
     kisalista = Kilpailu.objects.order_by('vuosi')
     objects = ', '.join([k.nimi for k in kisalista])
-    template = loader.get_template('kisa/index.html')
     global navigation_bar
+    template = loader.get_template('jinja2/index.html.j2')
     context = {
         'kisalista': kisalista,
         'navigation_bar': navigation_bar,
@@ -26,8 +26,8 @@ def index(request):
 
 
 def detail(request, kilpailu_id):
-    template = loader.get_template('kisa/kisa.html')
     global navigation_bar
+    template = loader.get_template('jinja2/kisa.html.j2')
     context = {
         'kisa': kilpailu_id,
         'navigation_bar': navigation_bar,
@@ -38,7 +38,7 @@ def detail(request, kilpailu_id):
 
 def lisaa_kisaaja(request):
     global navigation_bar
-    template = loader.get_template('kisa/lisaa_kisaaja.html')
+    template = loader.get_template('jinja2/lisaa_kisaaja.html.j2')
     if request.method == 'POST':
         uusi_kisaaja = Kisaaja(nimi_etu=request.POST['nimi_etu'], nimi_suku=request.POST['nimi_suku'], ruoka_allergiat=request.POST['allergiat'])
         # uusi_kisaaja['nimi_etu'] = request.POST['nimi_etu']
@@ -58,10 +58,11 @@ def lisaa_kisaaja(request):
 def add_lajipisteet(request, lajipisteet_id):
     return HttpResponse('Aseta lajipisteet: {}'.format(lajipisteet_id))
 
+
 def kisaajat(request, kilpailu_id):
     kisaajat = [{ 'name': 'Heidi Lehtonen'}, {'name': 'Antti Rahikainen'}]
-    template = loader.get_template('kisa/kisaajat.html')
     global navigation_bar
+    template = loader.get_template('jinja2/kisaajat.html.j2')
     context = {
         'navigation_bar': navigation_bar,
         'kisa': { 'id': kilpailu_id, 'name': 'Kesäkisat 2017'},
@@ -70,9 +71,10 @@ def kisaajat(request, kilpailu_id):
     }
     return HttpResponse(template.render(context, request))
 
+
 def kaikki_kisaajat(request):
-    template = loader.get_template('kisa/kisaajat.html')
     global navigation_bar
+    template = loader.get_template('jinja2/kisaajat.html.j2')
     context = {
         'navigation_bar': navigation_bar,
         'active_page': { 'id': 'kisaajat', 'name': 'Kaikki kisaajat'}
@@ -81,7 +83,7 @@ def kaikki_kisaajat(request):
 
 
 def kisaaja(request, kisaaja_id):
-    template = loader.get_template('kisa/kisaaja.html')
+    template = loader.get_template('jinja2/kisaaja.html.j2')
     global navigation_bar
     context = {
         'navigation_bar': navigation_bar,
