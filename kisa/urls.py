@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^lajit/lajityyppiinfo/$', views.lajityyppiinfo, name='lajityyppiinfo'),
 
     # ilmoittautumislomake
-    url(r'^/ilmoittaudu/$', views.ilmoittaudu, name='ilmoittaudu')
+    url(r'^ilmoittaudu/$', views.ilmoittaudu, name='ilmoittaudu')
 ]

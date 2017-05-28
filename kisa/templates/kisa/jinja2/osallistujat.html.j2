@@ -2,7 +2,7 @@
 {% block title %}Kisaajat{% endblock %}
 {% block content %}
 <div  class="uk-container">
-  <h1 class="uk-heading-line uk-text-center"><span>Kaikki kisaajat</span></h1>
+  <h1 class="uk-heading-line uk-text-center"><span>{{ kisa.name }} - osallistujat</span></h1>
 
   <p><a href="#add-kisaaja" uk-toggle class="uk-button-primary uk-button">Lisää kisaaja</a>
     <a href="#maili" uk-toggle class="uk-button-default uk-button">Lähetä sähköpostia</a></p>
@@ -33,6 +33,6 @@
       <p>Ei kisaajia :(</p>
 	{% endif %}
 </div>
-{% include 'jinja2/modals/kisaaja_modals.html.j2' %}
-{% include 'jinja2/modals/mailia.html.j2' %}
+{% include 'modals/kisaaja_modals.html' %}
+{% include 'modals/mailia.html' %}
 {% endblock %}

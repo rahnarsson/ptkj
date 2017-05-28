@@ -62,7 +62,7 @@ def add_lajipisteet(request, lajipisteet_id):
 def kisaajat(request, kilpailu_id):
     kisaajat = [{ 'name': 'Heidi Lehtonen'}, {'name': 'Antti Rahikainen'}]
     global navigation_bar
-    template = loader.get_template('jinja2/kisaajat.html.j2')
+    template = loader.get_template('jinja2/osallistujat.html.j2')
     context = {
         'navigation_bar': navigation_bar,
         'kisa': { 'id': kilpailu_id, 'name': 'Kesäkisat 2017'},
@@ -79,6 +79,7 @@ def kaikki_kisaajat(request):
         'navigation_bar': navigation_bar,
         'active_page': { 'id': 'kisaajat', 'name': 'Kaikki kisaajat'}
     }
+
     return HttpResponse(template.render(context, request))
 
 
@@ -94,16 +95,16 @@ def kisaaja(request, kisaaja_id):
 
 def kisaajainfo(request, kisaaja_id):
     context = {}
-    template = loader.get_template('kisa/modals/kisaajainfo.html')
+    template = loader.get_template('jinja2/modals/kisaajainfo.html.j2')
     return HttpResponse(template.render(context, request))
 
 def ilmoittaudu(request):
-    template = loader.get_template('kisa/ilmoittaudu.html')
+    template = loader.get_template('jinja2/ilmoittaudu.html.j2')
     context = {}
     return HttpResponse(template.render(context, request))
 
 def lajit(request):
-    template = loader.get_template('kisa/lajit.html')
+    template = loader.get_template('jinja2/lajit.html.j2')
     context = {
         'navigation_bar': navigation_bar,
         'active_page': { 'id': 'lajit', 'name': 'Lajit '}
@@ -111,6 +112,6 @@ def lajit(request):
     return HttpResponse(template.render(context, request))
 
 def lajityyppiinfo(request):
-    template = loader.get_template('kisa/lajityyppiinfo.html')
+    template = loader.get_template('jinja2/lajityyppiinfo.html.j2')
     context = {}
     return HttpResponse(template.render(context, request))

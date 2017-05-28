@@ -1,12 +1,12 @@
-{% extends "kisa/base.html" %}
+{% extends "jinja2/base.html.j2" %}
 {% block title %}Ilmoittaudu{% endblock %}
 {% block navigation %} {% endblock %}
 {% block content %}
 <div  class="uk-container">
   <h1 class="uk-heading-line uk-text-center"><span>Ilmoittaudu kisoihin</span></h1>
   <p>Ilmoittautuminen PTKJ ry:n kesäkisoihin 2017</p>
-  <form action="{% url 'lisaa_kisaaja' %}" method="post">
-  {% csrf_token %}
+  <form action="{{ url('lisaa_kisaaja') }}" method="post">
+  {{ csrftoken() }}
     <div class="uk-margin">
         <div class="uk-form-controls">
             <input class="uk-input" name="nimi_etu" id="nimi_etu" type="text" placeholder="Etunimi">
@@ -39,5 +39,5 @@
   </form>
 </div>
 
-{% include 'kisa/modals/ilmoittaudu_modals.html' %}
+{% include 'jinja2/modals/ilmoittaudu_modals.html.j2' %}
 {% endblock %}

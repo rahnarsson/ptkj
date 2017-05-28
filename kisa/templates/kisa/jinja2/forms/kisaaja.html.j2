@@ -1,5 +1,5 @@
-<form action="{% url 'lisaa_kisaaja' %}" method="post">
-{% csrf_token %}
+<form action="{{ url('lisaa_kisaaja') }}" method="post">
+{{ csrftoken() }}
 <div class="uk-margin">
     <div class="uk-form-controls">
         <input class="uk-input" name="nimi_etu" id="nimi_etu" type="text" placeholder="Etunimi">
