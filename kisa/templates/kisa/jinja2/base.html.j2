@@ -29,6 +29,9 @@
    {% endblock %}
    </header>
     <div id="content">{% block content %}{% endblock %}</div>
+
+    {% include 'jinja2/modals/kisaaja_modals.html.j2' %}
+    {% include 'jinja2/modals/mailia.html.j2' %}
     <!-- <div id="footer" class="uk-container" uk-sticky>
         {% block footer %}
         &copy; Copyright 2017 by <a href="http://ptkjry.com/">PTKJ ry</a>.

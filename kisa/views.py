@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
-
+from django.http import JsonResponse
+from django.core import serializers
 
 from .models import Kilpailu, Kisaaja
+
 
 navigation_bar = [
   ['/kisa', 'index', 'Kisat'],
@@ -40,13 +42,12 @@ def lisaa_kisaaja(request):
     global navigation_bar
     template = loader.get_template('jinja2/lisaa_kisaaja.html.j2')
     if request.method == 'POST':
-        uusi_kisaaja = Kisaaja(nimi_etu=request.POST['nimi_etu'], nimi_suku=request.POST['nimi_suku'], ruoka_allergiat=request.POST['allergiat'])
-        # uusi_kisaaja['nimi_etu'] = request.POST['nimi_etu']
-        # uusi_kisaaja['nimi_suku'] = request.POST['nimi_suku']
-        # uusi_kisaaja['ruoka_allergiat'] = request.POST['allergiat']
-        uusi_kisaaja_id = uusi_kisaaja.save()
-        return HttpResponseRedirect('/kisaaja/1')
-        #return HttpResponse(template.render(context, request))
+        uusi_kisaaja = Kisaaja(nimi_etu=request.POST['nimi_etu'], nimi_suku=request.POST['nimi_suku'],email=request.POST.get('email', ''), ruoka_allergiat=request.POST.get('allergiat',''))
+        if (request.POST.get('kisaaja_id', False) ):
+            uusi_kisaaja.pk=request.POST['kisaaja_id']
+
+        uusi_kisaaja.save()
+        return HttpResponseRedirect('/kisa/kisaaja/{}'.format(uusi_kisaaja.pk))
     else:
         context = {
             'navigation_bar': navigation_bar,
@@ -74,9 +75,12 @@ def kisaajat(request, kilpailu_id):
 
 def kaikki_kisaajat(request):
     global navigation_bar
+    kisaajat = Kisaaja.objects.order_by('nimi_etu')
+
     template = loader.get_template('jinja2/kisaajat.html.j2')
     context = {
         'navigation_bar': navigation_bar,
+        'kisaajalista': kisaajat,
         'active_page': { 'id': 'kisaajat', 'name': 'Kaikki kisaajat'}
     }
 
@@ -85,13 +89,18 @@ def kaikki_kisaajat(request):
 
 def kisaaja(request, kisaaja_id):
     template = loader.get_template('jinja2/kisaaja.html.j2')
+    kisaaja = Kisaaja.objects.get(pk=kisaaja_id)
     global navigation_bar
     context = {
         'navigation_bar': navigation_bar,
-        'kisaaja_id': kisaaja_id,
+        'kisaaja': kisaaja,
         'active_page': { 'id': 'kisaaja', 'name': 'Kisaaja ' + kisaaja_id}
     }
     return HttpResponse(template.render(context, request))
+
+def getkisaaja(request, kisaaja_id):
+    kisaaja = Kisaaja.objects.filter(pk=kisaaja_id).only('nimi_etu', 'nimi_suku', 'email')
+    return JsonResponse(serializers.serialize('json', kisaaja), safe=False)
 
 def kisaajainfo(request, kisaaja_id):
     context = {}

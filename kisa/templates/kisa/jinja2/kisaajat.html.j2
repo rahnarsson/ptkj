@@ -17,11 +17,12 @@
         </tr>
     </thead>
     <tbody>
+
       {% for kisaaja in kisaajalista %}
         <tr>
             <td><input class="uk-checkbox" /></td>
-            <td><a href="/kisa/kisaaja/{{ kisaaja.id }}/">{{ kisaaja.name }}</a></td>
-            <td class="uk-text-center"> {% if forloop.counter == 1 %}<span uk-icon="icon: happy">{% else %}<span uk-icon="icon: minus">{% endif %}</td>
+            <td><a href="/kisa/kisaaja/{{ kisaaja.id }}/">{{ kisaaja.nimi_suku }}, {{ kisaaja.nimi_etu }}</a></td>
+            <td class="uk-text-center"> {% if loop.index == 1 %}<span uk-icon="icon: happy">{% else %}<span uk-icon="icon: minus">{% endif %}</td>
             <td class="uk-text-right"><button onclick="osallistujaInfo('1')" class="uk-button uk-button-default" type="button">
               <span uk-icon="icon: info"></span></button></td>
         </tr>

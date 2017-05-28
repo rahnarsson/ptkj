@@ -5,16 +5,14 @@ from django.contrib.auth.models import UserManager
 
 # Create your models here.
 
-
 class Kisaaja(models.Model):
     nimi_etu = models.CharField(max_length=30)
     nimi_suku = models.CharField(max_length=30)
+    email = models.CharField(max_length=150, default='')
     ruoka_allergiat = models.CharField(max_length=100, default='')
 
     def __str__(self):
         return '{} {}'.format(self.nimi_etu, self.nimi_suku)
-    def save(self):
-        return 1;
 
 
 class Laji(models.Model):

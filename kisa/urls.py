@@ -25,5 +25,9 @@ urlpatterns = [
     url(r'^lajit/lajityyppiinfo/$', views.lajityyppiinfo, name='lajityyppiinfo'),
 
     # ilmoittautumislomake
-    url(r'^ilmoittaudu/$', views.ilmoittaudu, name='ilmoittaudu')
+    url(r'^ilmoittaudu/$', views.ilmoittaudu, name='ilmoittaudu'),
+
+    # JSON haut
+    url(r'^getkisaaja/(?P<kisaaja_id>[0-9]+)/$', views.getkisaaja, name='getkisaaja')
+
 ]

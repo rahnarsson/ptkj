@@ -1,25 +1,26 @@
 <form action="{{ url('lisaa_kisaaja') }}" method="post">
 {{ csrftoken() }}
+<input type="hidden" name="kisaaja_id" value="" />
 <div class="uk-margin">
     <div class="uk-form-controls">
-        <input class="uk-input" name="nimi_etu" id="nimi_etu" type="text" placeholder="Etunimi">
+        <input class="uk-input" name="nimi_etu" id="kisaaja_nimi_etu" type="text" placeholder="Etunimi" value="" />
     </div>
 </div>
 <div class="uk-margin">
     <div class="uk-form-controls">
-        <input class="uk-input" name="nimi_suku" id="nimi_suku" type="text" placeholder="Sukunimi">
+        <input class="uk-input" name="nimi_suku" id="kisaaja_nimi_suku" type="text" placeholder="Sukunimi" value="" />
     </div>
 </div>
 <div class="uk-margin">
     <div class="uk-form-controls">
-        <input class="uk-input" name="nimi_suku" id="nimi_suku" type="email" placeholder="Sähköpostiosoite">
+        <input class="uk-input" name="email" id="kisaaja_email" type="email" placeholder="Sähköpostiosoite" value="" />
     </div>
 </div>
 <div class="uk-margin">
     <div class="uk-form-controls">
-      <textarea class="uk-textarea" rows="5" placeholder="Ruoka-aineallergiat, muuta huomioitavaa"></textarea>
+      <textarea id="kisaaja_allergiat" name="allergiat" class="uk-textarea" rows="5" placeholder="Ruoka-aineallergiat, muuta huomioitavaa"></textarea>
     </div>
 </div>
-<button type="submit" class="uk-button uk-button-primary">Lisää</button>
+<button type="submit" class="uk-button uk-button-primary">Tallenna</button>
 <a href="#" class="uk-button uk-button-secondary">Peruuta</a>
 </form>
