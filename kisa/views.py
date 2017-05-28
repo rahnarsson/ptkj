@@ -10,7 +10,7 @@ from .models import Kilpailu, Kisaaja
 def index(request):
     kisalista = Kilpailu.objects.order_by('vuosi')
     objects = ', '.join([k.nimi for k in kisalista])
-    template = loader.get_template('kisa/index.html')
+    template = loader.get_template('jinja2/index.html.j2')
     context = {
         'kisalista': kisalista,
         'navigation_bar': [
@@ -23,7 +23,7 @@ def index(request):
 
 
 def detail(request, kilpailu_id):
-    template = loader.get_template('kisa/kisa.html')
+    template = loader.get_template('jinja2/kisa.html.j2')
     context = {
         'kisa': kilpailu_id,
         'navigation_bar': [
@@ -37,7 +37,7 @@ def detail(request, kilpailu_id):
 
 def lisaa_kisaaja(request):
 
-    template = loader.get_template('kisa/lisaa_kisaaja.html')
+    template = loader.get_template('jinja2/lisaa_kisaaja.html.j2')
     if request.method == 'POST':
         uusi_kisaaja = Kisaaja(nimi_etu=request.POST['nimi_etu'], nimi_suku=request.POST['nimi_suku'], ruoka_allergiat=request.POST['allergiat'])
         # uusi_kisaaja['nimi_etu'] = request.POST['nimi_etu']
@@ -66,8 +66,9 @@ def lisaa_kisaaja(request):
 def add_lajipisteet(request, lajipisteet_id):
     return HttpResponse('Aseta lajipisteet: {}'.format(lajipisteet_id))
 
+
 def kisaajat(request, kilpailu_id):
-    template = loader.get_template('kisa/kisaajat.html')
+    template = loader.get_template('jinja2/kisaajat.html.j2')
     context = {
         'navigation_bar': [
           ['/kisa', 'kisa', 'Kisat'],
@@ -77,8 +78,9 @@ def kisaajat(request, kilpailu_id):
     }
     return HttpResponse(template.render(context, request))
 
+
 def kaikki_kisaajat(request):
-    template = loader.get_template('kisa/kisaajat.html')
+    template = loader.get_template('jinja2/kisaajat.html.j2')
     context = {
         'navigation_bar': [
           ['/kisa', 'kisa', 'Kisat'],
@@ -90,7 +92,7 @@ def kaikki_kisaajat(request):
 
 
 def kisaaja(request, kilpailu_id, kisaaja_id):
-    template = loader.get_template('kisa/kisaaja.html')
+    template = loader.get_template('jinja2/kisaaja.html.j2')
     context = {
         'navigation_bar': [
           ['/kisa', 'kisa', 'Kisat'],

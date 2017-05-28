@@ -1,4 +1,4 @@
-{% extends "kisa/base.html" %}
+{% extends "jinja2/base.html.j2" %}
 {% block title %}Kisaajat{% endblock %}
 {% block content %}
 <div  class="uk-container">
@@ -15,5 +15,5 @@
 	{% endif %}
   <p><a href="#add-kisaaja" uk-toggle class="uk-button-primary uk-button">Lisää kisaaja</a></p>
 </div>
-{% include 'kisa/modals/kisaaja_modals.html' %}
+{% include 'modals/kisaaja_modals.html' %}
 {% endblock %}
