@@ -52,7 +52,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ptkj.urls'
 
+
 TEMPLATES = [
+
+    {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': ['kisa/templates/kisa', 'kisa/templates/kisa', 'kisa/templates/kisa'],
+        'APP_DIRS': True,
+        'OPTIONS': {'environment': 'kisa.jinja2.Environment'},
+    },
+
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
@@ -67,6 +76,8 @@ TEMPLATES = [
         },
     },
 ]
+
+print(TEMPLATES[0])
 
 WSGI_APPLICATION = 'ptkj.wsgi.application'
 
